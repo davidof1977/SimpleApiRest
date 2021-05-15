@@ -15,14 +15,17 @@ pipeline {
       	stage('Code Quality Check via SonarQube') {
 		   steps {
 		       script {
-		       def scannerHome = tool 'Sonarqube';
-		           withSonarQubeEnv("Sonarqube") {
-		           bat "${tool("Sonarqube")}/bin/sonar-scanner \
-		           -Dsonar.projectKey=davidof1977:SimpleApiRest \
+			 env.JAVA_HOME="${tool 'MyJava'}"
+			env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
+			       echo env.PATH
+			def scannerHome = tool 'Sonarqube';   
+			withSonarQubeEnv("Sonarqube") {
+		           sh "${tool("Sonarqube")}/bin/sonar-scanner \
+		           -Dsonar.projectKey=davidof:SimpleApiRest \
 		           -Dsonar.sources=src/main \
 		           -Dsonar.java.binaries=target \
-		           -Dsonar.host.url=http://localhost:9000 \
-		           -Dsonar.login=5f0e23ac47a28e2f25fff275d2a4106dab50d245"
+		           -Dsonar.host.url=http://192.168.1.36:9000/ \
+		           -Dsonar.login=1501ef1262f56b69a57730dcb585e75eb34f712a"
 		               }
 		           }
 		       }
@@ -32,14 +35,14 @@ pipeline {
                timeout(time: 1, unit: 'HOURS') {
                     // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
                     // true = set pipeline to UNSTABLE, false = don't
-                    waitForQualityGate abortPipeline: true
+                    waitForQualityGate abortPipeline: false
                 }
             }
         }   
         stage('Build') {
             steps {
                 echo "maven" 
-                bat 'mvn install'
+                sh 'mvn install'
             }
         }
         
