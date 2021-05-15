@@ -1,0 +1,12 @@
+io\swagger\api\ApiResponseMessage.class
+io\swagger\api\factories\SimpleapiApiServiceFactory.class
+io\swagger\api\ApiOriginFilter.class
+io\swagger\api\NotFoundException.class
+io\swagger\api\SimpleapiApi.class
+io\swagger\api\SimpleapiApiService.class
+io\swagger\api\RFC3339DateFormat.class
+io\swagger\api\ApiException.class
+io\swagger\api\impl\SimpleapiApiServiceImpl.class
+io\swagger\api\Bootstrap.class
+io\swagger\api\JacksonJsonProvider.class
+io\swagger\api\StringUtil.class
