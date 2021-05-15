@@ -18,7 +18,7 @@ pipeline {
 		       def scannerHome = tool 'Sonarqube';
 		           withSonarQubeEnv("Sonarqube") {
 		           bat "${tool("Sonarqube")}/bin/sonar-scanner \
-		           -Dsonar.projectKey=davidof:SimpleApiRest:SimpleApi \
+		           -Dsonar.projectKey=davidof1977:SimpleApiRest \
 		           -Dsonar.sources=src/main \
 		           -Dsonar.java.binaries=target \
 		           -Dsonar.host.url=http://localhost:9000 \
